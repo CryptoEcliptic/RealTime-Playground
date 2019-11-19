@@ -2,15 +2,30 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 .container-fluid-home {
-    height: 850px;
+    height: 650px;
     background-image: url('/images/23648461.jpg');
+    padding-left:20px;
 
 }
 
+#chicken-outer-container {
+    padding-bottom: 260px;
+}
+
+#chicken-container{
+    padding-bottom:260px;
+}
+#chicken-paragraph {
+    font-size:16pt;
+    /*padding-bottom:260px;*/
+}
+
+
+
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
