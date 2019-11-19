@@ -14,13 +14,11 @@ connection.on("ReceiveStatusUpdate", function (minutes, days, chickens, chickens
     pElDays.textContent = days;
     pElChickens.textContent = chickens;
     pElChickensGroup.textContent = chickensGroup;
-
+    turnChicken();
     if (index % 60 == 0) {
         createChickens(chickensGroup);
     }
     index++;
-
-
 });
 
 parent.appendChild(pElDays);
@@ -47,7 +45,12 @@ function createChickens(groupSize) {
        
         parentEl.appendChild(imgChickenElem);
     }
-   
+}
+let turn = 0;
+function turnChicken() {
+    let chicken = document.getElementById("rotating-chicken");
+    turn += 60;
+    chicken.style.transform = "rotate(" + (turn % 360) + "deg)"
 }
 
 

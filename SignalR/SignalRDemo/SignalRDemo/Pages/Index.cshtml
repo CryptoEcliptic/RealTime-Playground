@@ -1,20 +1,26 @@
 ﻿@page
-<div class="container-fluid-home">
-    <div class="row">
-        <div class="col-12">
-            <hr />
+    <div class="container-fluid-home">
+        <div class="row">
+            <div class="col-12">
+                <hr />
+            </div>
         </div>
+        <br />
+        <div class="row">
+            <img id="rotating-chicken" class="offset-6" src="~/images/cute-pterodactyl-cartoon_50699.jpg" />
+            <div id="date-time" class="col-12"></div>
+        </div>
+        @*<div class="row">
+            <div class="col-md-1 offset-6">
+                <img id="rotating-chicken" src="~/images/cute-pterodactyl-cartoon_50699.jpg" />
+            </div>
+        </div>*@
     </div>
-    <br />
-    <div class="row">
-        <div id="date-time" class="col-12"></div>
-    </div>
-</div>
 <div id="chicken-outer-container" class="container col-md-4 offset-1">
     <p id="chicken-paragraph">Chickens</p>
     <div id="chicken-container" class="container-fluid col-md-12 offset-1"></div>
 </div>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+<script src="~/js/main_engine.js"></script>
 
