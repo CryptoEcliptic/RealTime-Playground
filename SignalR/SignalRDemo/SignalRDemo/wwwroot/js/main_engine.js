@@ -1,5 +1,5 @@
 ﻿"use strict";
-
+import { createChickens } from "./createChickens.js"
 var connection = new signalR.HubConnectionBuilder().withUrl("/dataHub").build();
 console.log(connection);
 let parent = document.getElementById("date-time");
@@ -31,21 +31,7 @@ connection.start().then(function () {
         return console.error(err.toString());
     });
 });
-function createChickens(groupSize) {
-    let size = parseInt(groupSize);
-    let parentEl = document.getElementById("chicken-container");
-    while (parentEl.firstChild) {
-        parentEl.removeChild(parentEl.firstChild);
-    }
-    for (let i = 0; i < size; i++) {
-        let imgChickenElem = document.createElement("img");
-        imgChickenElem.src = "/images/fchicken_smallf.jpg";
-        imgChickenElem.classList.add("w3-circle");
-        imgChickenElem.alt = "Chicken";
-       
-        parentEl.appendChild(imgChickenElem);
-    }
-}
+
 let turn = 0;
 function turnChicken() {
     let chicken = document.getElementById("rotating-chicken");
