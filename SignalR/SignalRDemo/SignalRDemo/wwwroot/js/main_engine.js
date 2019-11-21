@@ -1,5 +1,5 @@
-﻿"use strict";
-import { createChickens } from "./createChickens.js"
+﻿import { createChickens } from "./createChickens.js"
+"use strict";
 var connection = new signalR.HubConnectionBuilder().withUrl("/dataHub").build();
 console.log(connection);
 let parent = document.getElementById("date-time");
@@ -15,12 +15,11 @@ connection.on("ReceiveStatusUpdate", function (minutes, days, chickens, chickens
     pElChickens.textContent = chickens;
     pElChickensGroup.textContent = chickensGroup;
     turnChicken();
-    if (index % 60 == 0) {
-        createChickens(chickensGroup);
+    if (index % 5 == 0) {
+        createChickens(chickensGroup); //TODO Try refactor
     }
     index++;
 });
-
 parent.appendChild(pElDays);
 parent.appendChild(pElMinutes);
 parent.appendChild(pElChickens);

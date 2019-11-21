@@ -1,4 +1,5 @@
-﻿export function createChickens(groupSize) {
+﻿import { createBoxes } from "./createBoxes.js"
+export function createChickens(groupSize) {
     let size = parseInt(groupSize);
     let parentEl = document.getElementById("chicken-container");
     while (parentEl.firstChild) {
@@ -12,4 +13,7 @@
 
         parentEl.appendChild(imgChickenElem);
     }
+    if (parseFloat(groupSize) >= 12.00 && parseFloat(groupSize) <= 12.10) {
+       createBoxes();
+    }  
 }

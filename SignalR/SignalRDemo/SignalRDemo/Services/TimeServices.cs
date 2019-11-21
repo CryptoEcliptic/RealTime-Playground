@@ -5,8 +5,8 @@ namespace SignalRDemo.Services
 {
     public class TimeServices : ITimeServices
     {
-        private DateTime startDate = new DateTime(2014, 9, 29, 18, 00, 00);
-        private int chickenDivisor = 6;
+        private DateTime startDate = new DateTime(2014, 9, 29, 18, 30, 00);
+        private int chickenDivisor = 1;
         public DateTimeServiceModel GetUpdate(DateTime currentDate)
         {
             var data = new DateTimeServiceModel
