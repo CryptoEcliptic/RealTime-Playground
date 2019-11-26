@@ -29,7 +29,9 @@ namespace SignalRDemo.Hubs
                                 $"{result.Minutes:F1} minutes", 
                                 $"{result.Days:F1} days",
                                 $"{result.Chickens:F1} total chickens",
-                                $"{result.Chickens % 13:F2} current chicken group");
+                                $"{result.ChickenGroups:F2} current chicken group",
+                                $"{result.TotalBoxes:F2} total boxes",
+                                $"{result.BoxGroup:F2} box group");
 
             }
             while (result.Minutes <= double.MaxValue);
