@@ -1,5 +1,4 @@
-﻿
-export function createChickens(groupSize) {
+﻿export function createChickens(groupSize) {
     let size = parseInt(groupSize);
     let parentEl = document.getElementById("chicken-container");
     while (parentEl.firstChild) {

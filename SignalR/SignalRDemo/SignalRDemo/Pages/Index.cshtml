@@ -1,24 +1,42 @@
 ﻿@page
-    <div class="container-fluid-home">
-        <div class="row">
-            <div class="col-12">
-                <hr />
+<div class="container-fluid-home">
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <img id="rotating-chicken" class="offset-6" src="~/images/cute-pterodactyl-cartoon_50699.jpg" />
+        <div id="date-time" class="col-12"></div>
+    </div>
+</div>
+<div id="chicken-outer-container" class="row col-md-12">
+    <p class="col-md-1" id="chicken-paragraph">1. Chickens are raised with love and care... &#127803; &#127803; &#127803;</p>
+    <div id="chicken-container" class="container col-md-5"></div>
+    <p class="col-md-1" id="chicken-paragraph">2. Chickens are packed and ready to go...</p>
+    <div id="box-container" class="col-md-5">
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Пъц-пъц</button>
             </div>
         </div>
-        <br />
-        <div class="row">
-            <img id="rotating-chicken" class="offset-6" src="~/images/cute-pterodactyl-cartoon_50699.jpg" />
-            <div id="date-time" class="col-12"></div>
-        </div>
     </div>
-    <div id="chicken-outer-container" class="row col-md-12">
-        <p class="col-md-1" id="chicken-paragraph">1. Chickens are raised with love and care... &#127803; &#127803; &#127803;</p>
-        <div id="chicken-container" class="container col-md-5"></div>
-        <p class="col-md-1" id="chicken-paragraph">2. Chickens are packed and ready to go...</p>
-        <div id="box-container" class="col-md-5">
-        </div>
-    </div>
-
+</div>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script type="module" src="~/js/main_engine.js"></script>
 

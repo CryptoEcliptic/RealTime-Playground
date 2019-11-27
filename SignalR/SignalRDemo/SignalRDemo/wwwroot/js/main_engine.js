@@ -1,6 +1,7 @@
 ﻿import { createChickens } from "./createChickens.js"
 import { createBoxes } from "./createBoxes.js"
 "use strict";
+
 var connection = new signalR.HubConnectionBuilder().withUrl("/dataHub").build();
 console.log(connection);
 let parent = document.getElementById("date-time");
@@ -21,7 +22,7 @@ connection.on("ReceiveStatusUpdate", function (minutes, days, chickens, chickens
     pBoxGroupElem.textContent = boxGroup;
     turnChicken();
     index++;
-    if (index % 5 === 0) {
+    if (index % 10 === 0) {
         createChickens(chickensGroup);
         createBoxes(boxGroup)
     }
@@ -37,6 +38,7 @@ connection.start().then(function () {
     connection.invoke("SendDateTime").catch(function (err) {
         return console.error(err.toString());
     });
+   
 });
 
 let turn = 0;
@@ -45,7 +47,3 @@ function turnChicken() {
     turn += 60;
     chicken.style.transform = "rotate(" + (turn % 360) + "deg)"
 }
-
-
-
-
