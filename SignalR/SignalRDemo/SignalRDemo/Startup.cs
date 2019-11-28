@@ -28,6 +28,7 @@ namespace SignalRDemo
             services.AddRazorPages();
             services.AddSignalR();
             services.AddTransient<ITimeServices, TimeServices>();
+            services.AddTransient<IMessageGenerator, MessageGenerator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

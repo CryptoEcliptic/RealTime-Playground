@@ -10,10 +10,12 @@ namespace SignalRDemo.Hubs
     public class DataHub : Hub
     {
         private readonly ITimeServices timeServices;
+        private readonly IMessageGenerator messageGenerator;
 
-        public DataHub(ITimeServices timeServices)
+        public DataHub(ITimeServices timeServices, IMessageGenerator messageGenerator)
         {
             this.timeServices = timeServices;
+            this.messageGenerator = messageGenerator;
         }
        
         public async Task SendDateTime()
@@ -35,6 +37,12 @@ namespace SignalRDemo.Hubs
 
             }
             while (result.Minutes <= double.MaxValue);
+            await this.Clients.Caller.SendAsync("Finished");
+        }
+
+        public async Task SendMessage()
+        {
+            
             await this.Clients.Caller.SendAsync("Finished");
         }
     }
