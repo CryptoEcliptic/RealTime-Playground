@@ -1,5 +1,6 @@
 ﻿import { createChickens } from "./createChickens.js"
 import { createBoxes } from "./createBoxes.js"
+import { seedModalWindow } from "./modalWindowSeeder.js"
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/dataHub").build();
@@ -24,7 +25,7 @@ connection.on("ReceiveStatusUpdate", function (minutes, days, chickens, chickens
     index++;
     if (index % 10 === 0) {
         createChickens(chickensGroup);
-        createBoxes(boxGroup)
+        createBoxes(boxGroup);
     }
 });
 parent.appendChild(pElDays);
@@ -37,8 +38,7 @@ parent.appendChild(pBoxGroupElem);
 connection.start().then(function () {
     connection.invoke("SendDateTime").catch(function (err) {
         return console.error(err.toString());
-    });
-   
+    }); 
 });
 
 let turn = 0;
@@ -47,3 +47,12 @@ function turnChicken() {
     turn += 60;
     chicken.style.transform = "rotate(" + (turn % 360) + "deg)"
 }
+
+document.addEventListener('click', function (e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+    seedModalWindow(target);
+}, false);
+
+
+
