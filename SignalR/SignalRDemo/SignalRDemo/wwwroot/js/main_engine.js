@@ -12,47 +12,56 @@ let pElChickens = document.createElement("p");
 let pElChickensGroup = document.createElement("p");
 let pBoxElem = document.createElement("p");
 let pBoxGroupElem = document.createElement("p");
-let index = 0;
 
 connection.on("ReceiveStatusUpdate", function (minutes, days, chickens, chickensGroup, boxes, boxGroup) {
-    pElMinutes.textContent = minutes + " " + index;
+    pElMinutes.textContent = minutes;
     pElDays.textContent = days;
     pElChickens.textContent = chickens;
     pElChickensGroup.textContent = chickensGroup;
     pBoxElem.textContent = boxes;
     pBoxGroupElem.textContent = boxGroup;
-    turnChicken();
-    index++;
-    if (index % 10 === 0) {
-        createChickens(chickensGroup);
-        createBoxes(boxGroup);
-    }
+    createChickens(chickensGroup);
+    createBoxes(boxGroup);
+
 });
+
+connection.on("ReceiveTextMessage", function (message) {
+    seedModalWindow(message);
+});
+
 parent.appendChild(pElDays);
 parent.appendChild(pElMinutes);
 parent.appendChild(pElChickens);
 parent.appendChild(pElChickensGroup);
 parent.appendChild(pBoxElem);
 parent.appendChild(pBoxGroupElem);
-
+//Starting signalR connection with Hub methods invocation
 connection.start().then(function () {
-    connection.invoke("SendDateTime").catch(function (err) {
-        return console.error(err.toString());
-    }); 
+    setInterval(function () {
+        connection.invoke("SendDateTime").catch(function (err) {
+            return console.error(err.toString());
+        });
+    }, 3000);
+    document.addEventListener('click', function (e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement;
+        connection.invoke("SendMessage").catch(function (err) {
+            return console.error(err.toString());
+        }, false);
+    });
 });
 
+//Below code is for Pterosaur element rotation
 let turn = 0;
+setInterval(function () {
+    turnChicken();
+}, 70)
+
 function turnChicken() {
     let chicken = document.getElementById("rotating-chicken");
-    turn += 60;
+    turn += 1;
     chicken.style.transform = "rotate(" + (turn % 360) + "deg)"
-}
-
-document.addEventListener('click', function (e) {
-    e = e || window.event;
-    var target = e.target || e.srcElement;
-    seedModalWindow(target);
-}, false);
-
+};
+//End of code for Pterosaur element rotation
 
 

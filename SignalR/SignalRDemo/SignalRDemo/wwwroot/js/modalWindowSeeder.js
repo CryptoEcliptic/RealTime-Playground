@@ -1,16 +1,12 @@
 ﻿import { hasSuchElement } from "./helpers.js";
 
-export function seedModalWindow(targetElement) {
+export function seedModalWindow(message) {
     let modal = document.getElementById("text-modal");
     hasSuchElement(modal);
-    hasSuchElement(targetElement);
 
-    if (targetElement.className === "w3-circle") {
-        textContent(modal);
-    }
+    textContent(modal, message);
 }
 
-function textContent(modal) {
-    console.log(modal);
-    modal.textContent = "Hello from the modal"
+function textContent(modal, message) {
+    modal.textContent = message;
 }

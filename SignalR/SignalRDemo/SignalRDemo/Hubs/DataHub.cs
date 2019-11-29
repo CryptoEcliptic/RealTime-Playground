@@ -17,33 +17,28 @@ namespace SignalRDemo.Hubs
             this.timeServices = timeServices;
             this.messageGenerator = messageGenerator;
         }
-       
+
         public async Task SendDateTime()
         {
             DateTimeServiceModel result;
-            do
-            {
-                Thread.Sleep(1000);
-                var currentDateTime = DateTime.Now;
-                result = this.timeServices.GetUpdate(currentDateTime);
-                await this.Clients.Caller
-                    .SendAsync("ReceiveStatusUpdate", 
-                                $"{result.Minutes:F1} minutes", 
-                                $"{result.Days:F1} days",
-                                $"{result.Chickens:F1} total chickens",
-                                $"{result.ChickenGroups:F2} current chicken group",
-                                $"{result.TotalBoxes:F2} total boxes",
-                                $"{result.BoxGroup:F2} box group");
+            var currentDateTime = DateTime.Now;
+            result = this.timeServices.GetUpdate(currentDateTime);
+            await this.Clients.Caller
+                .SendAsync("ReceiveStatusUpdate",
+                            $"{result.Minutes:F1} minutes",
+                            $"{result.Days:F1} days",
+                            $"{result.Chickens:F1} total chickens",
+                            $"{result.ChickenGroups:F2} current chicken group",
+                            $"{result.TotalBoxes:F2} total boxes",
+                            $"{result.BoxGroup:F2} box group");
 
-            }
-            while (result.Minutes <= double.MaxValue);
             await this.Clients.Caller.SendAsync("Finished");
         }
 
         public async Task SendMessage()
         {
-            
-            await this.Clients.Caller.SendAsync("Finished");
+            var message = this.messageGenerator.GenerateMessage();
+            await this.Clients.Caller.SendAsync("ReceiveTextMessage", message);
         }
     }
 }
