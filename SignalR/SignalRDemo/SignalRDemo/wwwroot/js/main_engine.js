@@ -1,11 +1,14 @@
 ﻿import { createChickens } from "./createChickens.js"
 import { createBoxes } from "./createBoxes.js"
 import { seedModalWindow } from "./modalWindowSeeder.js"
+import { hasSuchElement } from "./helpers.js";
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/dataHub").build();
 console.log(connection);
 let parent = document.getElementById("date-time");
+hasSuchElement(parent);
+
 let pElMinutes = document.createElement("p");
 let pElDays = document.createElement("p");
 let pElChickens = document.createElement("p");
@@ -59,6 +62,7 @@ setInterval(function () {
 
 function turnChicken() {
     let chicken = document.getElementById("rotating-chicken");
+    hasSuchElement(chicken);
     turn += 1;
     chicken.style.transform = "rotate(" + (turn % 360) + "deg)"
 };

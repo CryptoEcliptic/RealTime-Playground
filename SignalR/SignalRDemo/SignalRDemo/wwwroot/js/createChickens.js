@@ -1,6 +1,10 @@
-﻿export function createChickens(groupSize) {
+﻿import { hasSuchElement } from "./helpers.js";
+
+export function createChickens(groupSize) {
     let size = parseInt(groupSize);
     let parentEl = document.getElementById("chicken-container");
+    hasSuchElement(parentEl);
+
     while (parentEl.firstChild) {
         parentEl.removeChild(parentEl.firstChild);
     }

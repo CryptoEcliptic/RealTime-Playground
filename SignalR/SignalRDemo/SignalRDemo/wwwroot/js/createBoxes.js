@@ -1,4 +1,6 @@
-﻿export function createBoxes(boxCount) {
+﻿import { hasSuchElement } from "./helpers.js";
+
+export function createBoxes(boxCount) {
     const urls = {
         0: "/images/royalmailboxSm.jpg",
         1: "/images/royalmailboxSm.jpg",
@@ -6,6 +8,7 @@
         3: "/images/KFCchickenSm.jpg",
     };
     let parentEl = document.getElementById("box-container");
+    hasSuchElement(parentEl);
     let size = parseInt(boxCount);
 
     while (parentEl.firstChild) {

@@ -19,10 +19,11 @@ namespace SignalRDemo.Services
             "Олеее, олееее, Пильо закъснява!",
             "Биидо-биидо, Пильо малко закъснява, ама само малце.",
             "Пииильооо, това не е пуйка, това е фламинго!",
+            "Пильо не е прост, той знае!",
         };
         public string GenerateMessage()
         {
-            int maxCollectionIndex = messages.Count() - 1;
+            int maxCollectionIndex = messages.Count();
             Random rnd = new Random();
             int index = rnd.Next(0, maxCollectionIndex);
             string returnMessage = messages[index];
