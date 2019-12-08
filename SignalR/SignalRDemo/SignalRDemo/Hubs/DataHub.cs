@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using NAudio.Wave;
 using SignalRDemo.DTOs;
 using SignalRDemo.Services;
 using System;
+using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -40,5 +42,16 @@ namespace SignalRDemo.Hubs
             var message = this.messageGenerator.GenerateMessage();
             await this.Clients.Caller.SendAsync("ReceiveTextMessage", message);
         }
+
+        //public void PlaySound()
+        //{
+        //    using (var waveOut = new WaveOutEvent())
+        //    using (var wavReader = new WaveFileReader(@"wwwroot/sounds/raven_sound.wav")) //TODO Dicectory not found exception is thrown
+        //    {
+        //        waveOut.Init(wavReader);
+        //        waveOut.Volume = 100;
+        //        waveOut.Play();
+        //    }
+        //}
     }
 }

@@ -45,12 +45,14 @@ connection.start().then(function () {
             return console.error(err.toString());
         });
     }, 3000);
+   
     document.addEventListener('click', function (e) {
         e = e || window.event;
         var target = e.target || e.srcElement;
-        connection.invoke("SendMessage").catch(function (err) {
+        connection.invoke("SendMessage").catch(function (err) { //TODO SendMessage hub method should be invoked from here.
             return console.error(err.toString());
         }, false);
+        
     });
 });
 
