@@ -12,22 +12,17 @@ export function createChickens(groupSize) {
     for (let i = 0; i < size; i++) {
         let btn = document.createElement("button");
         btn.classList.add("btn");
-
-        let audioEl = document.createElement("audio")
-        let src = document.createElement("soucre");
-        src.setAttribute("src", "~/sounds/raven_sound.wav");
-        src.setAttribute("type", "audio/mpeg");
-        audioEl.appendChild(src);
-        
+        btn.classList.add("soundBtn");
 
         let imgChickenElem = document.createElement("img");
         imgChickenElem.src = "/images/fchicken_smallf.jpg";
         imgChickenElem.classList.add("w3-circle");
         imgChickenElem.alt = "Chicken";
 
-        btn.appendChild(audioEl);
         btn.appendChild(imgChickenElem)
-
+        btn.addEventListener("click", (e) => {
+            var audio = new Audio('/sounds/raven_sound.wav');
+            audio.play(); })
         parentEl.appendChild(btn);
     }
 }

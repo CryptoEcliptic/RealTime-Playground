@@ -6,6 +6,8 @@ import { hasSuchElement } from "./helpers.js";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/dataHub").build();
 console.log(connection);
+
+//Creating main DOM objects
 let parent = document.getElementById("date-time");
 hasSuchElement(parent);
 
@@ -38,13 +40,15 @@ parent.appendChild(pElChickens);
 parent.appendChild(pElChickensGroup);
 parent.appendChild(pBoxElem);
 parent.appendChild(pBoxGroupElem);
+//End creating main DOM objects
+
 //Starting signalR connection with Hub methods invocation
 connection.start().then(function () {
     setInterval(function () {
         connection.invoke("SendDateTime").catch(function (err) {
             return console.error(err.toString());
         });
-    }, 3000);
+    }, 10000);
    
     document.addEventListener('click', function (e) {
         e = e || window.event;
@@ -52,7 +56,6 @@ connection.start().then(function () {
         connection.invoke("SendMessage").catch(function (err) { //TODO SendMessage hub method should be invoked from here.
             return console.error(err.toString());
         }, false);
-        
     });
 });
 
