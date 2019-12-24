@@ -1,6 +1,14 @@
 ﻿import { hasSuchElement } from "./helpers.js";
 
 export function createChickens(groupSize) {
+    let soundUrls = {
+        0: '/sounds/BabyChicksChirpingSounds.wav',
+        1: '/sounds/raven_sound.wav',
+        2: '/sounds/RoosterSoundEffect.wav',
+        3: '/sounds/duckSound.wav',
+        4: '/sounds/PenguinSounds.wav',
+        5: '/sounds/owlSound.wav',
+    }
     let size = parseInt(groupSize);
     let parentEl = document.getElementById("chicken-container");
    
@@ -21,8 +29,10 @@ export function createChickens(groupSize) {
 
         btn.appendChild(imgChickenElem)
         btn.addEventListener("click", (e) => {
-            var audio = new Audio('/sounds/raven_sound.wav');
+            var audio = new Audio(soundUrls[i % 6]);
             audio.play(); })
         parentEl.appendChild(btn);
     }
+
+   
 }

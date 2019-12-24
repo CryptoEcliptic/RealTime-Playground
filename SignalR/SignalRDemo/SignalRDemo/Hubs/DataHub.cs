@@ -32,7 +32,8 @@ namespace SignalRDemo.Hubs
                             $"{result.Chickens:F1} total chickens",
                             $"{result.ChickenGroups:F2} current chicken group",
                             $"{result.TotalBoxes:F2} total boxes",
-                            $"{result.BoxGroup:F2} box group");
+                            $"{result.BoxGroup:F2} box group"
+                            );
 
             await this.Clients.Caller.SendAsync("Finished");
         }

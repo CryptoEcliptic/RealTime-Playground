@@ -1,5 +1,7 @@
 ﻿using SignalRDemo.DTOs;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SignalRDemo.Services
 {
@@ -19,7 +21,7 @@ namespace SignalRDemo.Services
                 Chickens = this.CalculateChickens(currentDate),
                 ChickenGroups = this.CalculateChickenGroups(currentDate),
                 TotalBoxes = this.CalculateBoxes(currentDate),
-                BoxGroup = this.CalculateBoxGroup(currentDate)
+                BoxGroup = this.CalculateBoxGroup(currentDate),
             };
 
             return data;
