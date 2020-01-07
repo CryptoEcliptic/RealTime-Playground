@@ -48,7 +48,7 @@ connection.start().then(function () {
         connection.invoke("SendDateTime").catch(function (err) {
             return console.error(err.toString());
         });
-    }, 10000);
+    }, 1000);
    
     document.addEventListener('click', function (e) {
         e = e || window.event;
