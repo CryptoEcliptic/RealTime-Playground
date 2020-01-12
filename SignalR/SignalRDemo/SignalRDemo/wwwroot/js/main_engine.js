@@ -1,12 +1,13 @@
 ﻿import { createChickens } from "./createChickens.js"
 import { createBoxes } from "./createBoxes.js"
 import { seedModalWindow } from "./modalWindowSeeder.js"
+import { switchTrainCars } from "./switch-train-cars.js"
 import { hasSuchElement } from "./helpers.js";
+
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/dataHub").build();
 console.log(connection);
-
 //Creating main DOM objects
 let parent = document.getElementById("date-time");
 hasSuchElement(parent);
@@ -27,6 +28,8 @@ connection.on("ReceiveStatusUpdate", function (minutes, days, chickens, chickens
     pBoxGroupElem.textContent = boxGroup;
     createChickens(chickensGroup);
     createBoxes(boxGroup);
+    switchTrainCars(boxGroup)
+    //TODO Create and invoke from here method for train cars
 
 });
 
@@ -72,5 +75,6 @@ function turnChicken() {
     chicken.style.transform = "rotate(" + (turn % 360) + "deg)"
 };
 //End of code for Pterosaur element rotation
+
 
 
