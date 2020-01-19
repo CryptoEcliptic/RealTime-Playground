@@ -9,13 +9,12 @@ export function createBoxes(boxCount) {
     };
     let parentEl = document.getElementById("box-container");
     hasSuchElement(parentEl);
-    let size = parseInt(boxCount);
 
     while (parentEl.firstChild) {
         parentEl.removeChild(parentEl.firstChild);
     }
-    
-    for (let i = 0; i < size; i++) {
+
+    for (let i = 0; i < boxCount; i++) {
         let btn = document.createElement("button");
         btn.classList.add("btn");
         btn.setAttribute("data-toggle", "modal");

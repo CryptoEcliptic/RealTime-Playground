@@ -7,11 +7,11 @@ namespace SignalRDemo.Services
 {
     public class TimeServices : ITimeServices
     {
-        private const int boxGroupDivisor = 24;
+        private const double boxGroupDivisor = 20.5;
         private DateTime startDate = new DateTime(2014, 9, 29, 18, 30, 00);
-        private int chickenDivisor = 1;
-        private int groupDivisor = 13;
-        private int boxDivisor = 12;
+        private const int chickenDivisor = 1;
+        private const double groupDivisor = 20.5;
+        private const int boxDivisor = 12;
         public DateTimeServiceModel GetUpdate(DateTime currentDate)
         {
             var data = new DateTimeServiceModel

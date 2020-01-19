@@ -20,6 +20,8 @@ let pBoxElem = document.createElement("p");
 let pBoxGroupElem = document.createElement("p");
 
 connection.on("ReceiveStatusUpdate", function (minutes, days, chickens, chickensGroup, boxes, boxGroup) {
+    let size = parseFloat(boxGroup);
+
     pElMinutes.textContent = minutes;
     pElDays.textContent = days;
     pElChickens.textContent = chickens;
@@ -27,8 +29,13 @@ connection.on("ReceiveStatusUpdate", function (minutes, days, chickens, chickens
     pBoxElem.textContent = boxes;
     pBoxGroupElem.textContent = boxGroup;
     createChickens(chickensGroup);
-    createBoxes(boxGroup);
-    switchTrainCars(boxGroup)
+    createBoxes(size);
+    console.log(size);
+    if (size == 24) {
+        switchTrainCars(size);
+        console.log("Inside")
+    }
+    
     //TODO Create and invoke from here method for train cars
 
 });
